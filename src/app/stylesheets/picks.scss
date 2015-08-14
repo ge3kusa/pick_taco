@@ -1,0 +1,23 @@
+.Picks-container {
+  .submit-picks-icon:before {
+    content: "done_all";
+  }
+  .cancel-picks-icon:before {
+    content: "cancel";
+  }
+  .five-icon:before {
+    content: "looks_5";
+  }
+  .four-icon:before {
+    content: "looks_4";
+  }
+  .three-icon:before {
+    content: "looks_3";
+  }
+  .two-icon:before {
+    content: "looks_two";
+  }
+  .one-icon:before {
+    content: "looks_one";
+  }
+}

@@ -1,0 +1,23 @@
+.Matchups-container {
+  .matchups-left-list, .matchups-right-list {
+    float: left;
+    width: 142px;
+    margin: 0;
+  }
+  .matchups-left-list {
+    margin-right: 10px;
+  }
+  .matchups-right-list {
+    margin-left: 10px;
+  }
+  .matchup-away-team, .matchup-home-team, .matchup-at {
+    display: inline-block;
+  }
+  .matchup-at {
+    font-size: 11px;
+  }
+  .matchup-away-team, .matchup-home-team {
+    max-width: 64px !important;
+    min-width: 64px !important
+  }
+}

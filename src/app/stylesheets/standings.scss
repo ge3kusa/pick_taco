@@ -1,0 +1,7 @@
+.Standings-container {
+  height: 480px;
+  overflow-x: auto;
+  .user-placeholder-icon:before {
+    content: "account_circle";
+  }
+}
