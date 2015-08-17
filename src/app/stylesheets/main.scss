@@ -6,4 +6,22 @@
   .standings-icon:before {
     content: "format_list_numbered";
   }
+
+  .Picks-container, .Matchup-container {
+    .pick-5-icon:before {
+      content: "looks_5";
+    }
+    .pick-4-icon:before {
+      content: "looks_4";
+    }
+    .pick-3-icon:before {
+      content: "looks_3";
+    }
+    .pick-2-icon:before {
+      content: "looks_two";
+    }
+    .pick-1-icon:before {
+      content: "looks_one";
+    }
+  }
 }

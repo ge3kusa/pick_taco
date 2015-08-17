@@ -5,19 +5,53 @@
   .cancel-picks-icon:before {
     content: "cancel";
   }
-  .five-icon:before {
-    content: "looks_5";
+  .dismiss-panel-icon:before {
+    content: "exit_to_app";
   }
-  .four-icon:before {
-    content: "looks_4";
+  .pick-action {
+    &:after {
+      position: absolute;
+      top: 16px;
+      right: 30px;
+      font-size: 13px;
+      color: #777;
+    }
+    &.clear {
+      &:after {
+        content: "CLEAR";
+      }
+    }
+    &.empty {
+      &:after {
+        content: "EMPTY!";
+      }
+    }
+    &.replace {
+      &:after {
+        content: "REPLACE";
+      }
+    }
+    &.choose {
+      &:after {
+        content: "CHOOSE";
+      }
+    }
   }
-  .three-icon:before {
-    content: "looks_3";
-  }
-  .two-icon:before {
-    content: "looks_two";
-  }
-  .one-icon:before {
-    content: "looks_one";
+  .pick-actions {}
+  .pick-details {
+    .pick-team {
+      text-align: center;
+      img {
+        height: 30px;
+        width: 30px;
+        position: relative;
+        top: 10px;
+        margin-right: 10px;
+      }
+      .team {
+        display: inline-block;
+        font-size: 16px;
+      }
+    }
   }
 }

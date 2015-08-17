@@ -15,13 +15,6 @@ export default class Picks extends React.Component {
     super();
   }
 
-  _icon_map(index) {
-    let icon_map = {
-      5: "five", 4: "four", 3: "three", 2: "two", 1: "one",
-    };
-    return icon_map[index];
-  }
-
   render() {
 
     return (
@@ -29,20 +22,41 @@ export default class Picks extends React.Component {
         <List subheader="Picks">
           {this.props.picks.map((pick, index) => {
             let pick_props = {}
-            let icon_className = "material-icons " + this._icon_map(pick.amount) + "-icon";
-            pick_props.primaryText = pick.team;
-            pick_props.key = "pick_" + index + 1;
-            pick_props.ref = "pick_" + index + 1;
-            return <ListItem {...pick_props} leftIcon={<FontIcon className={icon_className} />} rightIconButton={<FlatButton style={{marginTop: '6px', fontSize: '70%'}} label="Clear" primary={true} />} />
+            let icon_className = "material-icons pick-" + pick.amount + "-icon";
+            pick_props.key = "pick_" + (5-index);
+            pick_props.ref = "pick_" + (5-index);
+            // pick_props.primaryText = pick.team.name;
+            pick_props.className = this.props.pickedTeam === null ? "pick-action clear" : "pick-action " + (pick.team.abbr === '' ? 'choose' : 'replace');
+            return <ListItem primaryText={<div style={{height:'16px', margin: '0 0 0 -15px'}}>{pick.team.name}</div>} {...pick_props} leftIcon={<FontIcon className={icon_className} />} />
           })}
         </List>
         <ListDivider />
-        <RaisedButton label="Submit Picks" style={{width: '180px', display: 'block', margin: '20px auto'}}>
-          <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons submit-picks-icon" />
-        </RaisedButton>
-        <RaisedButton label="Reset Picks" style={{width: '180px', display: 'block', margin: '20px auto'}}>
-          <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons cancel-picks-icon" />
-        </RaisedButton>
+        { this.props.pickedTeam === null &&
+          <div className="pick-actions">
+            <RaisedButton label="Submit Picks" style={{width: '210px', display: 'block', margin: '18px auto'}}>
+              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons submit-picks-icon" />
+            </RaisedButton>
+            <RaisedButton onClick={this.props.clearAllPicks} label="Clear All" style={{width: '210px', display: 'block', margin: '18px auto'}}>
+              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons cancel-picks-icon" />
+            </RaisedButton>
+            <RaisedButton onClick={this.props.closePicksPanel} label="Back to Matchups" style={{width: '210px', display: 'block', margin: '18px auto'}}>
+              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons dismiss-panel-icon" />
+            </RaisedButton>
+          </div>
+        }
+        { this.props.pickedTeam !== null &&
+          <div className="pick-details">
+            <List subheader="Current Pick">
+              <div className="pick-team">
+                <img src={"images/" + this.props.pickedTeam.abbr + ".png"} />
+                <div className="team">{this.props.pickedTeam.name}</div>
+              </div>
+            </List>
+            <RaisedButton onClick={this.props.closePicksPanel} label="Cancel" style={{width: '130px', display: 'block', margin: '20px auto'}}>
+              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons cancel-picks-icon" />
+            </RaisedButton>
+          </div>
+        }
       </div>
     );
   }

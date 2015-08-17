@@ -1,3 +1,45 @@
-.Matchup-container {
+@import 'helpers';
 
+.Matchup-container {
+  margin: 10px 15px 20px  15px;
+  &:first-child {
+    margin-top: 0;
+  }
+  .matchup-parent {
+    @include clearfix;
+    padding: 15px 0;
+    text-align: center;
+    .matchup-at {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    .matchup-away {
+      text-align: right;
+    }
+    .matchup-home {
+      text-align: left;
+    }
+    .matchup-away, .matchup-home {
+      display: inline-block;
+      button {
+        .material-icons {
+          position: relative !important;
+          top: 6px;
+          margin-right: 5px;
+          color: #757575 !important;
+          fill: #757575 !important;
+        }
+        img {
+          height: 20px;
+          width: 20px;
+          position: relative;
+          top: 5px;
+          margin-right: 10px;
+        }
+        .team {
+          display: inline-block;
+        }
+      }
+    }
+  }
 }
