@@ -7,6 +7,10 @@
     content: "format_list_numbered";
   }
 
+  .account-icon:before {
+    content: "account_circle";
+  }
+
   .Picks-container, .Matchup-container {
     .pick-5-icon:before {
       content: "looks_5";

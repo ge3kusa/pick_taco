@@ -4,7 +4,6 @@ import './../stylesheets/picks.scss';
 
 let List = mui.List,
     ListItem = mui.ListItem,
-    RaisedButton = mui.RaisedButton,
     FlatButton = mui.FlatButton,
     ListDivider = mui.ListDivider,
     FontIcon = mui.FontIcon;
@@ -15,6 +14,10 @@ export default class Picks extends React.Component {
     super();
   }
 
+  _changePick(pick_data) {
+    this.props.changePick(pick_data);
+  }
+
   render() {
 
     return (
@@ -23,25 +26,24 @@ export default class Picks extends React.Component {
           {this.props.picks.map((pick, index) => {
             let pick_props = {}
             let icon_className = "material-icons pick-" + pick.amount + "-icon";
+            let pick_data = {};
+            pick_data.amount = (5-index);
+            if (this.props.pickedTeam !== null)
+              pick_data.new_team = this.props.pickedTeam;
+            if (pick.team.name.length > 0)
+              pick_data.old_team = pick.team;
             pick_props.key = "pick_" + (5-index);
             pick_props.ref = "pick_" + (5-index);
             // pick_props.primaryText = pick.team.name;
             pick_props.className = this.props.pickedTeam === null ? "pick-action clear" : "pick-action " + (pick.team.abbr === '' ? 'choose' : 'replace');
-            return <ListItem primaryText={<div style={{height:'16px', margin: '0 0 0 -15px'}}>{pick.team.name}</div>} {...pick_props} leftIcon={<FontIcon className={icon_className} />} />
+            return <ListItem onClick={this._changePick.bind(this, pick_data)} primaryText={<div style={{height:'16px', margin: '0 0 0 -15px'}}>{pick.team.name}</div>} {...pick_props} leftIcon={<FontIcon className={icon_className} />} />
           })}
         </List>
         <ListDivider />
         { this.props.pickedTeam === null &&
           <div className="pick-actions">
-            <RaisedButton label="Submit Picks" style={{width: '210px', display: 'block', margin: '18px auto'}}>
-              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons submit-picks-icon" />
-            </RaisedButton>
-            <RaisedButton onClick={this.props.clearAllPicks} label="Clear All" style={{width: '210px', display: 'block', margin: '18px auto'}}>
-              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons cancel-picks-icon" />
-            </RaisedButton>
-            <RaisedButton onClick={this.props.closePicksPanel} label="Back to Matchups" style={{width: '210px', display: 'block', margin: '18px auto'}}>
-              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons dismiss-panel-icon" />
-            </RaisedButton>
+            <FlatButton secondary={true} label="Submit Picks" style={{display: 'block', margin: '16px auto'}} />
+            <FlatButton secondary={true} onClick={this.props.closePicksPanel} label="Cancel" style={{display: 'block', margin: '16px auto'}} />
           </div>
         }
         { this.props.pickedTeam !== null &&
@@ -52,9 +54,7 @@ export default class Picks extends React.Component {
                 <div className="team">{this.props.pickedTeam.name}</div>
               </div>
             </List>
-            <RaisedButton onClick={this.props.closePicksPanel} label="Cancel" style={{width: '130px', display: 'block', margin: '20px auto'}}>
-              <FontIcon style={{float: 'left', verticalAlign: 'middle', lineHeight: '36px', display: 'inline-block', paddingLeft: '12px'}} className="material-icons cancel-picks-icon" />
-            </RaisedButton>
+            <FlatButton secondary={true} onClick={this.props.closePicksPanel} label="Cancel" style={{display: 'block', margin: '20px auto'}} />
           </div>
         }
       </div>

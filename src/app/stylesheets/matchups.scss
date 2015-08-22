@@ -1,0 +1,16 @@
+.Matchups-container {
+  margin-top: 15px;
+  &:last-child {
+    margin-top: -15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Matchups-container {
+    margin-top: 40px;
+    .matchups-column {
+      float: left;
+      width: 50%;
+    }
+  }
+}

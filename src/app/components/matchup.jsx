@@ -14,13 +14,13 @@ export default class Matchup extends React.Component {
   }
 
   _pickTeam(team, e) {
-    this.props.pickTeam(team, e)
+    this.props.pickTeam(team, e);
   }
 
   render() {
 
-    let away_slot = this.props.picksCache.hasOwnProperty(this.props.matchup.away.abbr) ? this.props.picksCache[this.props.matchup.away.abbr] : null;
-    let home_slot = this.props.picksCache.hasOwnProperty(this.props.matchup.home.abbr) ? this.props.picksCache[this.props.matchup.home.abbr] : null;
+    let away_slot = this.props.picksCache.hasOwnProperty(this.props.matchup.away.abbr) ? this.props.picksCache[this.props.matchup.away.abbr].amount : null;
+    let home_slot = this.props.picksCache.hasOwnProperty(this.props.matchup.home.abbr) ? this.props.picksCache[this.props.matchup.home.abbr].amount : null;
     let away_icon_className = "material-icons pick-" + away_slot + "-icon";
     let home_icon_className = "material-icons pick-" + home_slot + "-icon";
 

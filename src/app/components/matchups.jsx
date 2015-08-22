@@ -1,6 +1,7 @@
 import React from 'react';
 import mui from 'material-ui';
-import Matchup from './matchup.jsx';
+import Matchup from './matchup';
+import './../stylesheets/matchups.scss';
 
 let List = mui.List,
     ListItem = mui.ListItem;
@@ -15,7 +16,7 @@ export default class Matchups extends React.Component {
 
     return (
       <div className="Matchups-container">
-        <List subheader="Week 1 Matchups">
+        <List className="matchups-column">
           {this.props.matchups.map((matchup, index) => {
             return <Matchup picksCache={this.props.picksCache} pickTeam={this.props.pickTeam} matchup={matchup} key={index} />;
           })}

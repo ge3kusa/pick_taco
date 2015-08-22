@@ -22,6 +22,7 @@
     .matchup-away, .matchup-home {
       display: inline-block;
       button {
+        min-width: 50px !important;
         .material-icons {
           position: relative !important;
           top: 6px;

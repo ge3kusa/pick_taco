@@ -1,7 +1,62 @@
 .Standings-container {
-  height: 480px;
-  overflow-x: auto;
-  .user-placeholder-icon:before {
-    content: "account_circle";
+  width: 300px;
+  &:last-child {
+    margin-top: -15px;
+  }
+  .standing {
+    margin-left: 0;
+    padding-left: 75px;
+    padding-right: 56px;
+    padding-bottom: 16px;
+    padding-top: 20px;
+    position: relative;
+    .gravatar-parent {
+      img, .avatar {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        margin: 0 auto;
+      }
+      img {
+        -webkit-user-select: none;
+        border-radius: 50%;
+        display: block;
+        border: none;
+      }
+    }
+    .primary {
+      margin: 0;
+      font-size: 16px;
+      line-height: 16px;
+    }
+    .secondary {
+      font-size: 14px;
+      line-height: 16px;
+      margin: 0;
+      margin-top: 4px;
+      color: rgba(0, 0, 0, 0.54);
+    }
+    .rank {
+      position: absolute;
+      left: 15px;
+      top: 12px;
+      font-size: 20px;
+      padding: 12px;
+    }
+    .user-placeholder-icon:before {
+      content: "account_circle";
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Standings-container {
+    width: 100%;
+    margin-top: 20px;
+    .standings-column {
+      float: left;
+      width: 40%;
+      margin-right: 10%;
+    }
   }
 }

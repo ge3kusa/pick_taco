@@ -1,10 +1,9 @@
 import React from 'react';
 import mui from 'material-ui';
+import Gravatar from './gravatar';
 import './../stylesheets/standings.scss';
 
 let List = mui.List,
-    ListItem = mui.ListItem,
-    ListDivider = mui.ListDivider,
     Avatar = mui.Avatar;
 
 export default class Standings extends React.Component {
@@ -17,9 +16,18 @@ export default class Standings extends React.Component {
 
     return (
       <div className="Standings-container">
-        <List subheader="Standings">
+        <List className="standings-column">
           {this.props.standings.map((user, index) => {
-            return <ListItem className="standing" key={"standing_" + index} primaryText={user.name} secondaryText={user.score + " points"} leftAvatar={<Avatar>{user.initials}</Avatar>} />
+            return (
+              <div className="standing" key={"standing_" + index}>
+                <div className="gravatar-parent">
+                  <Gravatar s={50} email={user.email} d="blank" fallBack={<Avatar size={50} className="avatar">{user.initials}</Avatar>} />
+                </div>
+                <div className="primary">{user.name}</div>
+                <div className="secondary">{user.score + " points"}</div>
+                <div className="rank">{index + this.props.indexPad}</div>
+              </div>
+            );
           })}
         </List>
       </div>
