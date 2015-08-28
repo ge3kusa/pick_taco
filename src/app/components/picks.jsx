@@ -43,7 +43,7 @@ export default class Picks extends React.Component {
         { this.props.pickedTeam === null &&
           <div className="pick-actions">
             <FlatButton secondary={true} label="Submit Picks" style={{display: 'block', margin: '16px auto'}} />
-            <FlatButton secondary={true} onClick={this.props.closePicksPanel} label="Cancel" style={{display: 'block', margin: '16px auto'}} />
+            <FlatButton secondary={true} onClick={this.props.closePicksPanel} label="Dismiss" style={{display: 'block', margin: '16px auto'}} />
           </div>
         }
         { this.props.pickedTeam !== null &&
